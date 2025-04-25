@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="results.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2>Shield Academy</h2>
+    <nav>
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="status.html"><i class="fas fa-user-check"></i><span>Status Checker</span></a>
+      <a href="shield std guide.pdf"><i class="fas fa-book-open"></i><span>Student Guide</span></a>
+      <a href="calendar.html"><i class="fas fa-file-alt"></i><span>Academic calendar</span></a>
+      <a href="results.html"><i class="fas fa-chart-bar"></i><span>Check Results</span></a>
+      <a href="assess.html"><i class="fas fa-chalkboard-teacher"></i><span>Assess teachers</span></a>
+      <a href="bill.html"><i class="fas fa-receipt"></i><span>Bill & Payments</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <button id="toggleBtn">☰</button>
+      <h1>Welcome, Student!</h1>
+      <header>
+      
+        <div class="profile-header">
+          <span>Profile</span>
+          <img src="profile.svg" alt="Profile Picture" onclick="toggleProfileMenu()">
+      
+          <div class="profile-menu" id="profileMenu">
+            <a href="#">View Profile</a>
+            <a href="#">Settings</a>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </header>
+      
+    </header>
+
+    <section class="results-section">
+      <h2>Student Results</h2>
+      <button onclick="downloadPDF()" class="download-btn">Download PDF</button>
+
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Score</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by JavaScript -->
+        </tbody>
+      </table> 
+    </section><br>
+    <footer>2025 &copy; Shield Academy.      Designed and Developed by BlackMonk1</footer>
+     
+  </main>
+
+<script>
+  const results = [
+  { code: 'NUM101', title: 'NUMERACY', score: 85, grade: 'A' },
+  { code: 'RME101', title: 'RME', score: 78, grade: 'B+' },
+  { code: 'PHY101', title: 'PHYSICAL EDUCATION', score: 65, grade: 'C' },
+  { code: 'SCI101', title: 'SCIENCE', score: 92, grade: 'A*' },
+  { code: 'HIST101', title: 'HISTORY', score: 88, grade: 'A' },
+  { code: 'ENG101', title: 'ENGLISH', score: 74, grade: 'B' },
+  { code: 'ART101', title: 'ARTS', score: 80, grade: 'B+' },
+  { code: 'MUS101', title: 'MUSIC', score: 70, grade: 'B' },
+  { code: 'SCI101', title: 'SCIENCE', score: 92, grade: 'A*' }
+];
+
+const tableBody = document.querySelector("#resultsTable tbody");
+
+results.forEach(result => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${result.code}</td>
+    <td>${result.title}</td>
+    <td>${result.score}</td>
+    <td>${result.grade}</td>
+  `;
+  tableBody.appendChild(row);
+});
+
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(16);
+  doc.text("Student Results", 14, 15);
+
+  doc.autoTable({
+    html: '#resultsTable',
+    startY: 25,
+    headStyles: { fillColor: [0, 85, 46] }, // Shield green
+    styles: {
+      halign: 'center',
+      valign: 'middle'
+    }
+  });
+
+  doc.save("student_results.pdf");
+}
+
+
+</script>
+<script src="script.js"></script>
+</body>
+</html>

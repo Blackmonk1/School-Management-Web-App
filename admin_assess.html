@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assess Student</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assess.css">
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2>Shield Academy</h2>
+    <nav>
+      <a href="admin_dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      
+      <a href="admin_results.html"><i class="fas fa-chart-bar"></i><span>Submit Results</span></a>
+      <a href="admin_assess.html"><i class="fas fa-chalkboard-teacher"></i><span>Assess Students</span></a>
+      
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <button id="toggleBtn">☰</button>
+      <h1 style="color: white;">Welcome, Staff!</h1>
+      <header>
+      
+        <div class="profile-header">
+          <span>Profile</span>
+          <img src="profile.svg" alt="Profile Picture" onclick="toggleProfileMenu()">
+      
+          <div class="profile-menu" id="profileMenu">
+            <a href="#">View Profile</a>
+            <a href="#">Settings</a>
+            <a href="admin.html">Logout</a>
+          </div>
+        </div>
+          
+    </header>
+      
+    </header>
+    <section >
+        <div class="container">
+            <h1>Student Assessment Form</h1>
+            
+            <form id="assessmentForm">
+              <label for="studentName">Student Name:</label>
+              <input type="text" id="studentName" name="studentName" required>
+        
+              <div class="criteria">
+                <h3>Participation</h3>
+                <label><input type="radio" name="participation" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="participation" value="Good"> Good</label>
+                <label><input type="radio" name="participation" value="Fair"> Fair</label>
+                <label><input type="radio" name="participation" value="Poor"> Poor</label>
+              </div>
+        
+              <div class="criteria">
+                <h3>Assignments</h3>
+                <label><input type="radio" name="assignments" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="assignments" value="Good"> Good</label>
+                <label><input type="radio" name="assignments" value="Fair"> Fair</label>
+                <label><input type="radio" name="assignments" value="Poor"> Poor</label>
+              </div>
+        
+              <div class="criteria">
+                <h3>Behavior</h3>
+                <label><input type="radio" name="behavior" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="behavior" value="Good"> Good</label>
+                <label><input type="radio" name="behavior" value="Fair"> Fair</label>
+                <label><input type="radio" name="behavior" value="Poor"> Poor</label>
+              </div>
+        
+              <button id="submitBtn" type="submit">Submit Assessment</button>
+            </form>
+        
+            <div id="result"></div>
+          </div>
+        
+        
+    </section><br>
+
+    <footer>2025 &copy; Shield Academy.      Designed and Developed by BlackMonk1</footer>
+     
+  </main>
+
+    <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

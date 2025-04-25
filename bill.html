@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bills|Student Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="bill.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2>Shield Academy</h2>
+    <nav>
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="status.html"><i class="fas fa-user-check"></i><span>Status Checker</span></a>
+      <a href="shield std guide.pdf"><i class="fas fa-book-open"></i><span>Student Guide</span></a>
+      <a href="#"><i class="fas fa-file-alt"></i><span>Academic calendar</span></a>
+      <a href="results.html"><i class="fas fa-chart-bar"></i><span>Check Results</span></a>
+      <a href="assess.html"><i class="fas fa-chalkboard-teacher"></i><span>Assess teachers</span></a>
+      <a href="bill.html"><i class="fas fa-receipt"></i><span>Bill & Payments</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <button id="toggleBtn">☰</button>
+      <h1>Welcome, Student!</h1>
+      <header>
+      
+        <div class="profile-header">
+          <span>Profile</span>
+          <img src="profile.svg" alt="Profile Picture" onclick="toggleProfileMenu()">
+      
+          <div class="profile-menu" id="profileMenu">
+            <a href="#">View Profile</a>
+            <a href="#">Settings</a>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </header>
+      
+    </header>
+ 
+    <section>
+      
+<div class="card">
+  <h2 class="section-title">Billing History</h2>
+  <table id="billingTable">
+    <thead>
+      <tr>
+        <th>Date Paid</th>
+        <th>Term</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Will be populated using JavaScript -->
+    </tbody>
+    
+  </table>
+
+</div>
+
+<button onclick="downloadPDF()" class="download-btn">Download as PDF</button>
+
+      
+      
+    </section><br>
+    <footer>2025 &copy; Shield Academy.      Designed and Developed by BlackMonk1</footer>
+     
+  </main>
+
+  <script>
+    const billingData = [
+      { date: "2025-04-25", term: "Second Term", amount: "$450", status: "Unpaid" },
+      { date: "2025-01-15", term: "First Term", amount: "$400", status: "Paid" },
+      { date: "2024-09-12", term: "Third Term", amount: "$380", status: "Paid" },
+      { date: "2024-04-20", term: "Second Term", amount: "$395", status: "Paid" },
+    ];
+  
+    const tableBody = document.querySelector("#billingTable tbody");
+  
+    billingData.forEach((bill) => {
+      const row = document.createElement("tr");
+  
+      row.innerHTML = `
+        <td>${bill.date}</td>
+        <td>${bill.term}</td>
+        <td>${bill.amount}</td>
+        <td style="color: green; font-weight: bold;">${bill.status}</td>
+      `;
+  
+      tableBody.appendChild(row);
+    });
+
+    function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.text("Shield Academy - Billing History", 14, 20);
+
+    doc.autoTable({
+      startY: 30,
+      head: [['Date Paid', 'Term', 'Amount', 'Status']],
+      body: billingData.map(item => [item.date, item.term, item.amount, item.status]),
+    });
+
+    doc.save("billing-history.pdf");
+  }
+
+  
+  </script>
+  <script src="script.js"></script>  
+</body>
+</html>

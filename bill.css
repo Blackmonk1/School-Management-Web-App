@@ -1,0 +1,64 @@
+.card {
+    background: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #004225;
+  }
+  
+  #billingTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #billingTable th,
+  #billingTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  #billingTable th {
+    background-color: #004225;
+    color: white;
+  }
+  
+  .download-btn {
+    background-color: #004225;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .download-btn:hover {
+    background-color: #006633;
+  }
+  
+  .pay-btn {
+    background-color: #007a33;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 15px;
+    border-radius: 8px;
+    align-self: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .pay-btn:hover {
+    background-color: #00994d;
+  }
+  

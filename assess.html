@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assess.css">
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2>Shield Academy</h2>
+    <nav>
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="status.html"><i class="fas fa-user-check"></i><span>Status Checker</span></a>
+      <a href="shield std guide.pdf"><i class="fas fa-book-open"></i><span>Student Guide</span></a>
+      <a href="#"><i class="fas fa-file-alt"></i><span>Academic calendar</span></a>
+      <a href="results.html"><i class="fas fa-chart-bar"></i><span>Check Results</span></a>
+      <a href="assess.html"><i class="fas fa-chalkboard-teacher"></i><span>Assess teachers</span></a>
+      <a href="bill.html"><i class="fas fa-receipt"></i><span>Bill & Payments</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <button id="toggleBtn">☰</button>
+      <h1 style="color: white;">Welcome, Student!</h1>
+      <header>
+      
+        <div class="profile-header">
+          <span>Profile</span>
+          <img src="profile.svg" alt="Profile Picture" onclick="toggleProfileMenu()">
+      
+          <div class="profile-menu" id="profileMenu">
+            <a href="#">View Profile</a>
+            <a href="#">Settings</a>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </header>
+      
+    </header>
+     
+    <section >
+      <div class="container">
+          <h1>Teacher  Assessment Form</h1>
+          
+          <form id="assessmentForm">
+            <label for="studentName">Teacher Name:</label>
+            <input type="text" id="teacherName" name="teacherName" required>
+      
+            <div class="criteria">
+              <h3>Teaching Competence</h3>
+              <p>Does the teacher teach to your understanding? How well would you rate your teacher?</p>
+              <label><input type="radio" name="participation" value="Excellent" required> Excellent</label>
+              <label><input type="radio" name="participation" value="Good"> Good</label>
+              <label><input type="radio" name="participation" value="Fair"> Fair</label>
+              <label><input type="radio" name="participation" value="Poor"> Poor</label>
+            </div>
+      
+            <div class="criteria">
+              <h3>Classroom Management</h3>
+              <p>How well does the teacher manage conflicts, inclusivity and cultural sensitivity</p>
+              <label><input type="radio" name="assignments" value="Excellent" required> Excellent</label>
+              <label><input type="radio" name="assignments" value="Good"> Good</label>
+              <label><input type="radio" name="assignments" value="Fair"> Fair</label>
+              <label><input type="radio" name="assignments" value="Poor"> Poor</label>
+            </div>
+      
+            <div class="criteria">
+              <h3>Safety and Well-being</h3>
+              <p>Physical and emotional safety or support. Does the teacher have any
+                 anti-bullying measures and mentally health awareness programs?</p>
+              </p>
+              <label><input type="radio" name="behavior" value="Excellent" required> Excellent</label>
+              <label><input type="radio" name="behavior" value="Good"> Good</label>
+              <label><input type="radio" name="behavior" value="Fair"> Fair</label>
+              <label><input type="radio" name="behavior" value="Poor"> Poor</label>
+            </div>
+      
+            <button id="submitBtn" type="submit">Submit Assessment</button>
+          </form>
+      
+          <div id="result"></div>
+        </div>
+      
+
+      
+      
+    </section><br>
+    <footer>2025 &copy; Shield Academy.      Designed and Developed by BlackMonk1</footer>
+     
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+.results-section {
+    margin: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .results-section h2 {
+    margin-bottom: 15px;
+    color: #004d00;
+  }
+  
+  #resultsTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #resultsTable th,
+  #resultsTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  #resultsTable th {
+    background-color: #004d00;
+    color: white;
+  }
+  
+  .download-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .download-btn:hover {
+    background-color:  #004d00;
+  }
+  

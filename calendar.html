@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="calender.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2>Shield Academy</h2>
+    <nav>
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="status.html"><i class="fas fa-user-check"></i><span>Status Checker</span></a>
+      <a href="shield std guide.pdf"><i class="fas fa-book-open"></i><span>Student Guide</span></a>
+      <a href="#"><i class="fas fa-file-alt"></i><span>Academic calendar</span></a>
+      <a href="results.html"><i class="fas fa-chart-bar"></i><span>Check Results</span></a>
+      <a href="assess.html"><i class="fas fa-chalkboard-teacher"></i><span>Assess teachers</span></a>
+      <a href="bill.html"><i class="fas fa-receipt"></i><span>Bill & Payments</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <button id="toggleBtn">☰</button>
+      <h1>Welcome, Student!</h1>
+      <header>
+      
+        <div class="profile-header">
+          <span>Profile</span>
+          <img src="profile.svg" alt="Profile Picture" onclick="toggleProfileMenu()">
+      
+          <div class="profile-menu" id="profileMenu">
+            <a href="#">View Profile</a>
+            <a href="#">Settings</a>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </header>
+      
+    </header>
+    <section class="calendar">
+        <h2>Academic Calendar - 2025</h2>
+        <div class="calendar-table">
+          <h3>First Term</h3>
+          <table>
+            <tr><th>Activity</th><th>Date</th></tr>
+            <tr><td>School Reopens</td><td>Monday, Jan 13, 2025</td></tr>
+            <tr><td>Mid-Term Break</td><td>Feb 20 – Feb 21</td></tr>
+            <tr><td>School Closes</td><td>Friday, April 4, 2025</td></tr>
+          </table>
+      
+          <h3>Second Term</h3>
+          <table>
+            <tr><th>Activity</th><th>Date</th></tr>
+            <tr><td>School Reopens</td><td>Monday, April 28, 2025</td></tr>
+            <tr><td>Mid-Term Break</td><td>June 5 – June 6</td></tr>
+            <tr><td>Sports Day</td><td>June 7 – June 10</td></tr>
+            <tr><td>School Closes</td><td>Friday, July 18, 2025</td></tr>
+          </table>
+      
+          <h3>Third Term</h3>
+          <table>
+            <tr><th>Activity</th><th>Date</th></tr>
+            <tr><td>School Reopens</td><td>Monday, Aug 18, 2025</td></tr>
+            <tr><td>Mid-Term Break</td><td>Sept 25 – Sept 26</td></tr>
+            <tr><td>Parent-Teacher Conference</td><td>Sept 27</td></tr>
+            <tr><td>Exams</td><td>Oct 27 – Oct 31</td></tr>
+            <tr><td>End-Of-Year Programme</td><td>Nov 15,– Nov 17</td></tr>
+            <tr><td>School Closes</td><td>Friday, Nov 28, 2025</td></tr>
+
+          </table>
+          
+          <button onclick="downloadPDF()">📄 Download Calendar (PDF)</button>
+        </div>
+      
+    </section><br>
+    <footer>2025 &copy; Shield Academy.      Designed and Developed by BlackMonk1</footer>
+     
+  </main>
+  <script>
+  async function downloadPDF() {
+    const { jsPDF } = window.jspdf; 
+    const doc = new jsPDF();
+
+    // Title
+    doc.setFontSize(18);
+    doc.text("Shield Academy", 45, 20);
+    doc.setFontSize(14);
+    doc.text("Academic Calendar - 2025", 45, 30);
+
+    let y = 50;
+
+    const calendarData = [
+        { term: "First Term", activities: [
+            ["School Reopens", "Jan 13, 2025"],
+            ["Mid-Term Break", "Feb 20 – Feb 21"],
+            ["School Closes", "April 4, 2025"]
+        ]},
+        { term: "Second Term", activities: [
+            ["School Reopens", "April 28, 2025"],
+            ["Mid-Term Break", "June 5 – June 6"],
+            ["Sports Day", "June 7 – June 10"],
+            ["School Closes", "July 18, 2025"]
+        ]},
+        { term: "Third Term", activities: [
+            ["School Reopens", "Aug 18, 2025"],
+            ["Mid-Term Break", "Sept 25 – Sept 26"],
+            ["Parent-Teacher Conference", "Sept 27"],
+            ["Exams", "Oct 27 – Oct 31"],
+            ["End-Of-Year Programme", "Nov 15 – Nov 17"],
+            ["School Closes", "Nov 28, 2025"]
+        ]}
+    ];
+
+    calendarData.forEach(term => {
+        doc.setFontSize(13);
+        doc.text(term.term, 10, y);
+        y += 6;
+        doc.setFontSize(11);
+        term.activities.forEach(([activity, date]) => {
+            doc.text(`${activity}: ${date}`, 12, y);
+            y += 6;
+        });
+        y += 6;
+    });
+
+    // Save the PDF
+    doc.save("Academic_Calendar_2025.pdf");
+}
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>
